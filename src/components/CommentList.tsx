@@ -13,7 +13,9 @@ const CommentList = (props: CommentListProps) => {
 
     return <>
         {
-            comments.map((comment: Comment) => <CommentCard body={comment.body} />)
+            comments.map((comment: Comment) => <CommentCard body={comment.body} author={comment.user.login} state={comment.user.body} />)
+
+
         }
     </>
 }

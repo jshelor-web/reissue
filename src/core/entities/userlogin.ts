@@ -5,7 +5,7 @@ export class User {
     user: string
     body: string
 
-    constructor(id: number, state: string, login: string, user: string, body: string) {
+    constructor(id: number, state: string, login: string, user: string, body: string,) {
         this.id = id
         this.state = state
         this.login = login
