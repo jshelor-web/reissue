@@ -1,9 +1,9 @@
 import IssueList from "./components/IssueList"
-import { MemIssueRepo } from "./repos/issuerepo"
+import { GithubIssueRepo } from "./repos/github/issuerepo";
 
 const App = () => {
   return <div>
-    <IssueList repo={new MemIssueRepo()} />
+    <IssueList repo={new GithubIssueRepo(localStorage.getItem("github_access_token"))} />
   </div>
 }
 

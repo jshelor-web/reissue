@@ -1,21 +1,30 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Comment, ICommentRepo } from "../core/entities/comment"
-import { MemCommentRepo } from "../repos/commentrepo"
 
 import CommentCard from "./Comment"
 
 export interface CommentListProps {
     issueId: number
+    repo: ICommentRepo
 }
 
 const CommentList = (props: CommentListProps) => {
-    const [comments] = useState(new MemCommentRepo().getComments(props.issueId))
+    const [comments, setComments] = useState<Comment[]>([])
+
+    useEffect(() => {
+        const fetch = async () => {
+            const promisedComments: Comment[] = await props.repo.getComments(props.issueId)
+            console.log(promisedComments)
+            setComments(promisedComments)
+        }
+
+        fetch()
+    }, [props.issueId])
 
     return <>
+
         {
-            comments.map((comment: Comment) => <CommentCard body={comment.body} author={comment.user.login} state={comment.user.body} />)
-
-
+            comments.map((comment: Comment) => <CommentCard body={comment.body} author={comment.author.userName} />)
         }
     </>
 }

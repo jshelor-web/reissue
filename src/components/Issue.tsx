@@ -1,5 +1,6 @@
 import { Card } from "react-bootstrap"
 import CommentList from "./CommentList"
+import {GithubComentRepo} from "../repos/github/commentrepo"
 
 export interface IssueProps {
     id: number
@@ -14,7 +15,7 @@ const Issue = (props: IssueProps) => {
             <Card.Text>{props.body}</Card.Text>
         </Card.Body>
         <Card.Footer>
-            <CommentList issueId={props.id} />
+            <CommentList issueId={props.id} repo={new GithubComentRepo(String(localStorage.getItem("github_access_token")))} />
         </Card.Footer>
     </Card>
 }

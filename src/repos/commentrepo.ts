@@ -30,7 +30,9 @@ export class MemCommentRepo implements ICommentRepo {
 
     ]
 
-    getComments(issueId: number): Comment[] {
-        return this.comments.filter((comment: any) => comment.issue_id === issueId)
-    }
+    async getComments(issueId: number): Promise<Comment[]> {
+        return new Promise((resolve, reject) => {
+            resolve(this.comments.filter((comment: any) => comment.issue_id === issueId)
+        )});
+        }
 }

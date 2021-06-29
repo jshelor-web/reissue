@@ -1,17 +1,23 @@
-import {User} from "./userlogin" 
+import {User} from "./user" 
 
 export class Comment {
     id: number
     body: string
-    user: User
 
-    constructor(id: number, body: string, user: User) {
+    createdAt: string
+    updatedAt: string
+
+    author: User
+
+    constructor(id: number, body: string, author: User) {
         this.id = id
         this.body = body
-        this.user = user
+        this.createdAt = ""
+        this.updatedAt = ""
+        this.author = author
     }
 }
 
 export interface ICommentRepo {
-    getComments(issueId: number): Comment[]
+    getComments(issueId: number): Promise<Comment[]>
 }
