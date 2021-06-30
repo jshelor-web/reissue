@@ -8,24 +8,24 @@ export class MemCommentRepo implements ICommentRepo {
             , issue_id: 100
             , user: {
                 id: 1
-            , state: "active"
-            , login: "tcat"
-            , user: "Top Cat"
-            , body: "User is Active"
+                , state: "active"
+                , login: "tcat"
+                , user: "Top Cat"
+                , body: "User is Active"
             }
         }
         , {
             id: 2
             , body: "Another comment"
             , issue_id: 101
-            , user : {
+            , user: {
                 id: 2
                 , state: "inactive"
                 , login: "ybear"
                 , user: "Yogi Bear"
                 , body: "User is Inactive"
             }
-           
+
         }
 
     ]
@@ -33,6 +33,13 @@ export class MemCommentRepo implements ICommentRepo {
     async getComments(issueId: number): Promise<Comment[]> {
         return new Promise((resolve, reject) => {
             resolve(this.comments.filter((comment: any) => comment.issue_id === issueId)
-        )});
-        }
+            )
+        });
+    }
+
+    async createComment(issueId: number, body: string): Promise<Comment> {
+        return new Promise((resolve, reject) => {
+            resolve(this.comments[0])
+        });
+    }
 }

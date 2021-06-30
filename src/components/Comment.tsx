@@ -6,7 +6,7 @@ export interface CommentProps {
 }
 
 const Comment = (props: CommentProps) => {
-    return <Card>
+    return <Card style={{marginBottom: "1em"}}>
         <Card.Body>
             <Card.Text>{ props.body }</Card.Text>
             <Card.Text>Comment created by <strong><em>{ props.author }</em></strong></Card.Text>

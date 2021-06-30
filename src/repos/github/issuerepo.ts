@@ -11,10 +11,17 @@ export class GithubIssueRepo implements IIssueRepo {
     }
 
     async getIssues(): Promise<Issue[]> {
-        const result = await axios.get("https://api.github.com/repos/jshelor-web/reissue/issues", {headers: { "Authorization": `token ${this.authToken}`}})
-
-        return result.data.map((jsonIss: any) => {
-            return new Issue(jsonIss.number, jsonIss.state, jsonIss.title, jsonIss.body)
-        })
+        try {
+            const result = await axios.get("https://api.github.com/repos/jshelor-web/reissue/issues", {headers: { "Authorization": `token ${this.authToken}`}})
+    
+            return result.data.map((jsonIss: any) => {
+                return new Issue(jsonIss.number, jsonIss.state, jsonIss.title, jsonIss.body)
+            })
+        } catch (err) {
+            console.error(err)
+            return new Promise((resolve, reject) => {
+                reject([]);
+            });
+        }
     }
 }

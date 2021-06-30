@@ -12,10 +12,18 @@ export class GithubComentRepo implements ICommentRepo {
     }
 
     async getComments(issueId: number): Promise<Comment[]> {
-        const result = await axios.get(`https://api.github.com/repos/jshelor-web/reissue/issues/${issueId}/comments`, {headers: { "Authorization": `token ${this.authToken}`}})
-        
+        const result = await axios.get(`https://api.github.com/repos/jshelor-web/reissue/issues/${issueId}/comments`, { headers: { "Authorization": `token ${this.authToken}` } })
+
         return result.data.map((jsonComment: any) => {
             return new Comment(jsonComment.id, jsonComment.body, new User(jsonComment.user.id, jsonComment.user.login))
         })
+    }
+
+    async createComment(issueId: number, body: string): Promise<Comment> {
+        const result = await axios.post(`https://api.github.com/repos/jshelor-web/reissue/issues/${issueId}/comments`, { body }, { headers: { "Authorization": `token ${this.authToken}` } })
+
+        const { data } = result
+
+        return new Comment(data.id, data.body, new User(data.user.id, data.user.login))
     }
 }
