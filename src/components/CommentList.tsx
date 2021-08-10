@@ -21,7 +21,7 @@ const CommentList = (props: CommentListProps) => {
         }
 
         fetch()
-    }, [props.issueId])
+    }, [props.issueId, props.repo])
 
     const postComment = async (body: string) => {
         const comment = await props.repo.createComment(props.issueId, body)
@@ -40,7 +40,7 @@ const CommentList = (props: CommentListProps) => {
             <Form.Group controlId="exampleForm.ControlTextarea1" style={{ marginTop: "1em" }}>
                 <Form.Control as="textarea" rows={3} placeholder="New comment" onChange={(e: React.ChangeEvent<HTMLInputElement>) => setNewCommentBody(e.currentTarget.value)} />
             </Form.Group>
-            <Button variant="primary" type="submit">Submit</Button>
+            <Button variant="primary" type="submit">Add Comment</Button>
         </Form>
     </>
 }

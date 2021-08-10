@@ -4,8 +4,10 @@ import {GithubComentRepo} from "../repos/github/commentrepo"
 
 export interface IssueProps {
     id: number
+    state: string
     title: string
     body: string
+    author: string
 }
 
 const Issue = (props: IssueProps) => {
