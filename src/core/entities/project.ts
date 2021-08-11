@@ -1,13 +1,5 @@
-export class Project {
-    baseUrl: string
-    authToken: string
-    schema: string
-
-    constructor(baseUrl: string, authToken: string, schema: string = "github") {
-        this.baseUrl = baseUrl
-        this.authToken = authToken
-        this.schema = schema
-    }
+export interface Project {
+    ownerRepo: string
 }
 
 export interface IProjectRepo {

@@ -1,25 +1,22 @@
 import { Card } from "react-bootstrap"
 import CommentList from "./CommentList"
 import {GithubComentRepo} from "../repos/github/commentrepo"
+import { Issue } from "../core/entities/issue"
 
 export interface IssueProps {
-    id: number
-    state: string
-    title: string
-    body: string
-    author: string
+    issue: Issue
 }
 
-const Issue = (props: IssueProps) => {
+const IssueCard = (props: IssueProps) => {
     return <Card style={{marginBottom: "1em"}}>
         <Card.Body>
-            <Card.Title>{props.title}</Card.Title>
-            <Card.Text>{props.body}</Card.Text>
+            <Card.Title>{props.issue.title}</Card.Title>
+            <Card.Text>{props.issue.body}</Card.Text>
         </Card.Body>
         <Card.Footer>
-            <CommentList issueId={props.id} repo={new GithubComentRepo(String(localStorage.getItem("github_access_token")))} />
+            <CommentList issueId={props.issue.id} repo={new GithubComentRepo(String(localStorage.getItem("github_access_token")))} />
         </Card.Footer>
     </Card>
 }
 
-export default Issue
+export default IssueCard

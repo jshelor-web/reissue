@@ -7,7 +7,7 @@ export class Issue {
     body: string
 
     createdAt: string
-    UpdatedAt: string
+    updatedAt: string
 
     author: User
 
@@ -17,12 +17,12 @@ export class Issue {
         this.title = title
         this.body = body
         this.createdAt = ""
-        this.UpdatedAt = ""
+        this.updatedAt = ""
         this.author = author
     }
 }
 
 export interface IIssueRepo {
-    getIssues(id: number): Promise<Issue[]>
+    getIssues(): Promise<Issue[]>
     createIssue(title: string): Promise<Issue>
 }
