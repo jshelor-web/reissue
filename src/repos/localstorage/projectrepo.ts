@@ -11,5 +11,5 @@ export class ProjectRepo implements IProjectRepo {
         return JSON.parse(projectsStr)
     }
 
-    // [{"ownerRepo":"jshelor-web/reissue"}]
+    // [{"ownerRepo":"jshelor-web/reissue"},{"ownerRepo":"nwehr/reissue"}]
 }

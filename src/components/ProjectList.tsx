@@ -17,7 +17,7 @@ const ProjectList = (props: ProjectListProps) => {
     const { projects } = useProjects(props.repo)
 
     return <div className="project-list">
-        {projects.map((project: Project) => <li>{project.ownerRepo}</li>)}
+        {projects.map((project: Project) => <li className="listag">{project.ownerRepo}</li>)}
     </div>
 }
 

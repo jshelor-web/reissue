@@ -1,3 +1,32 @@
 body {
     padding: 1em;
+    background-color: rgb(227, 226, 241);
 }
+
+.project-list  {  
+    color: lightcyan;
+    width: 15%;
+    height: 1100px;
+    margin-right: 10px;
+    padding: 0 0 0 10px;
+    position: absolute;
+    top: 95px;
+    left: 10px;
+    background-color: rgba(23, 34, 32, 0.699);
+    border: solid rgb(147, 161, 202) 3px;
+    border-style: groove;
+}
+
+.listag {
+    list-style: none;
+    padding: 1em;
+}
+
+.issue-list {  
+    width: 82%;
+    height: 75%;
+    position: absolute;
+    top: 95px;
+    right: 5px;
+}
+
